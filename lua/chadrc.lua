@@ -6,29 +6,7 @@
 local M = {}
 
 M.base46 = {
-	theme = "chadracula",
-
-	-- hl_override = {
-	-- 	Comment = { italic = true },
-	-- 	["@comment"] = { italic = true },
-	-- },
-}
-
-M.ui = {
-  tabufline = {
-	order = { "buffers", "tabs" },
-  }
-}
-
-M.lsp = {
-	signature = true,
-}
-
-M.colorify = {
-	enabled = true,
-	mode = "virtual",
-	virt_text = "󱓻 ",
-	highlight = { hex = true, lspvars = true },
+	theme = "bearded-arc",
 }
 
 return M

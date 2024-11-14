@@ -40,14 +40,10 @@ opt.splitbelow = true -- split horizontal window to the bottom
 -- turn off swapfile
 opt.swapfile = false
 
--- Remve trailing spaces
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = { "*" },
-  command = [[%s/\s\+$//e]],
-})
-
 -- LSP: Show diagnostic popup on cursor hold
-vim.api.nvim_create_autocmd({ 'CursorHold' }, {
-  pattern = { "*" },
-  command = ':lua vim.diagnostic.open_float({ scope="line", focus = false })',
-})
+-- vim.api.nvim_create_autocmd({ 'CursorHold' }, {
+--   pattern = { "*" },
+--   command = ':lua vim.diagnostic.open_float({ scope="line", focus = false })',
+-- })
+
+vim.lsp.inlay_hint.enable(true)
