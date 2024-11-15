@@ -4,9 +4,6 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
-map("n", ";", ":", { desc = "CMD enter command mode" })
-map("i", "jk", "<ESC>")
-
 -- Nvim DAP
 map("n", "<Leader>dl", "<cmd>lua require'dap'.step_into()<CR>", { desc = "Debugger step into" })
 map("n", "<Leader>dj", "<cmd>lua require'dap'.step_over()<CR>", { desc = "Debugger step over" })
@@ -32,6 +29,4 @@ map("n", "<Leader>gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", { desc = "Go
 map("n", "<Leader>gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { desc = "Signature", noremap=true, silent=true })
 map("n", "<Leader>gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", { desc = "Go to type definition", noremap=true, silent=true })
 map("n", "<Leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>", { desc = "Find references", noremap=true, silent=true })
--- -- map("n", "g0", "<cmd>lua vim.lsp.buf.document_symbol()<CR>", options)
--- -- map("n", "gW", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>", options)
 map("n", "<Leader>ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", { desc = "Code actions", noremap=true, silent=true })
