@@ -40,20 +40,16 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 require("nvim-tree").setup({
-  sort = {
-    sorter = "case_sensitive",
-  },
   view = {
     width = 50,
-  },
-  renderer = {
-    group_empty = true,
-  },
-  filters = {
-    dotfiles = true,
   },
   update_focused_file = {
       enable = true,
       update_cwd = true,
+  },
+  git = {
+    enable = true,
+    ignore = false,
+    timeout = 500,
   },
 })
