@@ -15,7 +15,7 @@ return {
     "simrat39/rust-tools.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
     dependencies = {
-      "neovim/nvim-lspconfig", 
+      "neovim/nvim-lspconfig",
       "nvim-lua/plenary.nvim"
     },
     config = function()
