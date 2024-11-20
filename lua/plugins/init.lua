@@ -7,13 +7,13 @@ return {
   },
   {
     "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
+    event = 'BufWritePre', -- uncomment for format on save
     opts = require "configs.conform",
   },
 
   {
     "simrat39/rust-tools.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
+    event = 'BufWritePre', -- uncomment for format on save
     dependencies = {
       "neovim/nvim-lspconfig",
       "nvim-lua/plenary.nvim"
@@ -67,7 +67,8 @@ return {
         dap = {
           adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
         },
-      }
+      } 
+      vim.g.rustfmt_autosave = 1
 
     end
   },
