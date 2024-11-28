@@ -1,7 +1,5 @@
 require "nvchad.mappings"
 
--- add yours here
-
 local map = vim.keymap.set
 
 -- Nvim DAP
@@ -71,4 +69,3 @@ map("n", "K", function()
         vim.cmd [[ Lspsaga hover_doc ]]
     end
 end, { desc = "Peek fold" })
-
