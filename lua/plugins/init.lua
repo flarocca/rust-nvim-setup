@@ -18,37 +18,6 @@ return {
         event = "BufWritePre", -- uncomment for format on save
         opts = require "configs.conform",
     },
-
-    -- {
-    --     "simrat39/rust-tools.nvim",
-    --     event = "BufWritePre", -- uncomment for format on save
-    --     dependencies = {
-    --         "neovim/nvim-lspconfig",
-    --         "nvim-lua/plenary.nvim",
-    --     },
-    --     config = function()
-    --         local rt = require "rust-tools"
-
-    --         rt.setup {
-    --             server = {
-    --                 on_attach = function(_, bufnr) end,
-    --             },
-    --             tools = {
-    --                 rust_analyzer = {
-    --                     enable = true,
-    --                 },
-    --                 reload_workspace_from_cargo_toml = true,
-    --                 inlay_hints = {
-    --                     auto = true,
-    --                     highlight = "Comment",
-    --                 },
-    --             },
-    --         }
-
-    --         -- rt.hover_actions.hover_actions()
-    --     end,
-    -- },
-
     {
         "neovim/nvim-lspconfig",
         config = function()
@@ -76,15 +45,6 @@ return {
             vim.g.rustfmt_autosave = 1
         end,
     },
-
-    -- {
-    --     "rust-lang/rust.vim",
-    --     ft = "rust",
-    --     init = function()
-    --         vim.g.rustfmt_autosave = 1
-    --     end,
-    -- },
-
     {
         "mfussenegger/nvim-dap",
         config = function()
@@ -139,7 +99,10 @@ return {
             "MunifTanjim/nui.nvim",
         },
     },
-    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make",
+    },
     {
         "aaronhallaert/advanced-git-search.nvim",
         dependencies = {
@@ -148,12 +111,6 @@ return {
             "tpope/vim-rhubarb",
         },
     },
-    -- {
-    --     "exosyphon/telescope-color-picker.nvim",
-    --     config = function()
-    --         vim.keymap.set("n", "<leader>uC", "<cmd>Telescope colors<CR>", { desc = "Telescope Color Picker" })
-    --     end,
-    -- },
     {
         "folke/noice.nvim",
         event = "VeryLazy",
@@ -172,5 +129,19 @@ return {
             "MunifTanjim/nui.nvim",
             "rcarriga/nvim-notify",
         },
+    },
+    {
+        "CopilotC-Nvim/CopilotChat.nvim",
+        lazy = false,
+        branch = "canary",
+        dependencies = {
+            { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
+            { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+        },
+        build = "make tiktoken", -- Only on MacOS or Linux
+        config = function()
+            require("CopilotChat").setup {}
+        end,
+        -- See Commands section for default commands if you want to lazy load on them
     },
 }

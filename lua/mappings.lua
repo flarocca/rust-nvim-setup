@@ -69,3 +69,6 @@ map("n", "K", function()
         vim.cmd [[ Lspsaga hover_doc ]]
     end
 end, { desc = "Peek fold" })
+
+-- Git version
+-- map("n", "<Leader>ve", "<cmd>:Fugit2<CR>", { desc = "Engine" })
