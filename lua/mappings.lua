@@ -1,8 +1,10 @@
 require "nvchad.mappings"
 
--- add yours here
-
 local map = vim.keymap.set
+
+-- Nvim Tree
+map("n", "<Leader>ef", "<cmd>NvimTreeFocus<CR>", { desc = "NvimTree Focus", noremap = true, silent = true })
+map("n", "<Leader>et", "<cmd>NvimTreeToggle<CR>", { desc = "NvimTree Toggle", noremap = true, silent = true })
 
 -- Nvim DAP
 map("n", "<Leader>dl", "<cmd>lua require'dap'.step_into()<CR>", { desc = "Debugger step into" })
@@ -51,7 +53,7 @@ map(
 map(
     "n",
     "<Leader>gr",
-    "<cmd>lua vim.lsp.buf.references()<CR>",
+    "<cmd>Telescope lsp_references<CR>",
     { desc = "Find references", noremap = true, silent = true }
 )
 map(
@@ -60,6 +62,13 @@ map(
     "<cmd>lua vim.lsp.buf.code_action()<CR>",
     { desc = "Code actions", noremap = true, silent = true }
 )
+map(
+    "n",
+    "<Leader>gn",
+    "<cmd>lua vim.lsp.buf.rename()<CR>",
+    { desc = "Remane", noremap = true, silent = true }
+)
+
 -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
 map("n", "zR", require("ufo").openAllFolds, { desc = "Unfold all" })
 map("n", "zM", require("ufo").closeAllFolds, { desc = "Fold all" })
@@ -72,3 +81,27 @@ map("n", "K", function()
     end
 end, { desc = "Peek fold" })
 
+-- Telescope
+local builtin = require "telescope.builtin"
+map("n", "<leader>ff", builtin.find_files, { desc = "Find Files" })
+map(
+    "n",
+    "<leader>fg",
+    "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
+    { desc = "Live Grep" }
+)
+map(
+    "n",
+    "<leader>fc",
+    '<cmd>lua require("telescope.builtin").live_grep({ glob_pattern = "!{spec,test}"})<CR>',
+    { desc = "Live Grep Code" }
+)
+map("n", "<leader>fb", builtin.buffers, { desc = "Find Buffers" })
+map("n", "<leader>fh", builtin.help_tags, { desc = "Find Help Tags" })
+map("n", "<leader>fs", builtin.lsp_document_symbols, { desc = "Find Symbols" })
+map("n", "<leader>fi", "<cmd>AdvancedGitSearch<CR>", { desc = "Advanced Git Search" })
+map("n", "<leader>fo", builtin.oldfiles, { desc = "Find Old Files" })
+map("n", "<leader>fw", builtin.grep_string, { desc = "Find Word under Cursor" })
+map("n", "<leader>fgc", builtin.git_commits, { desc = "Search Git Commits" })
+map("n", "<leader>fgb", builtin.git_bcommits, { desc = "Search Git Commits for Buffer" })
+map("n", "<leader>fk", builtin.keymaps, { desc = "Find Keymaps" })
