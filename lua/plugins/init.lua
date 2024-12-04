@@ -49,15 +49,19 @@ return {
         "mfussenegger/nvim-dap",
         config = function()
             local dap, dapui = require "dap", require "dapui"
+            ---@diagnostic disable-next-line: undefined-field
             dap.listeners.before.attach.dapui_config = function()
                 dapui.open()
             end
+            ---@diagnostic disable-next-line: undefined-field
             dap.listeners.before.launch.dapui_config = function()
                 dapui.open()
             end
+            ---@diagnostic disable-next-line: undefined-field
             dap.listeners.before.event_terminated.dapui_config = function()
                 dapui.close()
             end
+            ---@diagnostic disable-next-line: undefined-field
             dap.listeners.before.event_exited.dapui_config = function()
                 dapui.close()
             end
@@ -84,7 +88,8 @@ return {
                     },
                 },
             }
-            require("cmp").setup.buffer {
+            ---@diagnostic disable-next-line: redundant-parameter
+            require("cmp").setup {
                 sources = { { name = "crates" } },
             }
         end,
@@ -133,7 +138,7 @@ return {
     {
         "CopilotC-Nvim/CopilotChat.nvim",
         lazy = false,
-        branch = "canary",
+        branch = "main",
         dependencies = {
             { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
             { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
@@ -143,5 +148,20 @@ return {
             require("CopilotChat").setup {}
         end,
         -- See Commands section for default commands if you want to lazy load on them
+    },
+    {
+        "b0o/SchemaStore.nvim",
+        -- lazy = false, -- Cargar solo cuando sea necesario
+        -- config = function()
+        --     -- Configuración adicional del plugin
+        --     require("schemastore").setup {
+        --         settings = {
+        --             json = {
+        --                 schemas = require("schemastore").json.schemas(),
+        --                 validate = { enable = true },
+        --             },
+        --         },
+        --     }
+        -- end,
     },
 }

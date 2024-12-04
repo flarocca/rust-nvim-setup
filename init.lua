@@ -52,48 +52,48 @@ require("nvim-tree").setup {
         ignore = false,
         timeout = 500,
     },
-    -- diagnostics = {
-    --     enable = true,
-    --     show_on_dirs = true,
-    --     show_on_open_dirs = true,
-    --     -- debounce_delay = 50,
-    --     icons = {
-    --         hint = "",
-    --         info = "",
-    --         warning = "",
-    --         error = "",
-    --     },
-    -- },
-    -- actions = {
-    --     expand_all = {
-    --         exclude = {
-    --             "node_modules",
-    --             "target",
-    --             "build",
-    --             ".git",
-    --         },
-    --     },
-    -- },
-    -- tab = {
-    --     sync = {
-    --         open = true,
-    --         close = true,
-    --         ignore = {},
-    --     },
-    -- },
-    -- renderer = {
-    --     root_folder_label = ":~:s?$?/?",
-    --     special_files = {},
-    --     highlight_git = true,
-    --     highlight_diagnostics = true,
-    --     highlight_modified = "all",
-    --     indent_markers = {
-    --         enable = true,
-    --     },
-    --     icons = {
-    --         show = {
-    --             folder_arrow = true,
-    --         },
-    --     },
-    -- },
+    diagnostics = {
+        enable = true,
+        show_on_dirs = true,
+        show_on_open_dirs = true,
+        -- debounce_delay = 50,
+        icons = {
+            hint = "",
+            info = "",
+            warning = "",
+            error = "",
+        },
+    },
+    actions = {
+        expand_all = {
+            exclude = {
+                "node_modules",
+                "target",
+                "build",
+                ".git",
+            },
+        },
+    },
+    tab = {
+        sync = {
+            open = true,
+            close = true,
+            ignore = {},
+        },
+    },
+    renderer = {
+        root_folder_label = ":~:s?$?/?",
+        special_files = {},
+        highlight_git = true,
+        highlight_diagnostics = true,
+        highlight_modified = "all",
+        indent_markers = {
+            enable = true,
+        },
+        icons = {
+            show = {
+                folder_arrow = true,
+            },
+        },
+    },
 }

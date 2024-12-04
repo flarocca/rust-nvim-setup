@@ -76,28 +76,28 @@ return {
     --     },
     --     cmd = { "Fugit2", "Fugit2Diff", "Fugit2Graph" },
     -- },
-    {
-        "f-person/git-blame.nvim",
-        lazy = false,
-        config = function()
-            vim.g.gitblame_enabled = 0
-            vim.cmd "GitBlameDisable"
-            vim.g.gitblame_delay = 50
-        end,
-    },
-    {
-        "sindrets/diffview.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
-        opts = {
-            enhanced_diff_hl = true, -- Opcional: mejora el resaltado del diff
-        },
-        cmd = {
-            "DiffviewOpen",
-            "DiffviewClose",
-            "DiffviewToggleFiles",
-            "DiffviewFocusFiles",
-        },
-    },
+    -- {
+    --     "f-person/git-blame.nvim",
+    --     lazy = false,
+    --     config = function()
+    --         vim.g.gitblame_enabled = 0
+    --         vim.cmd "GitBlameDisable"
+    --         vim.g.gitblame_delay = 50
+    --     end,
+    -- },
+    -- {
+    --     "sindrets/diffview.nvim",
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",
+    --     },
+    --     opts = {
+    --         enhanced_diff_hl = true, -- Opcional: mejora el resaltado del diff
+    --     },
+    --     cmd = {
+    --         "DiffviewOpen",
+    --         "DiffviewClose",
+    --         "DiffviewToggleFiles",
+    --         "DiffviewFocusFiles",
+    --     },
+    -- },
 }
