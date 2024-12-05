@@ -8,7 +8,6 @@ return {
         "debugloop/telescope-undo.nvim",
         "andrew-george/telescope-themes",
         "nvim-tree/nvim-web-devicons",
-        "olimorris/persisted.nvim",
         {
             "nvim-telescope/telescope-fzf-native.nvim",
             build = "make",
@@ -16,7 +15,6 @@ return {
         },
     },
     config = function()
-        -- local builtin = require "telescope.builtin"
         -- vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find Files" })
         -- vim.keymap.set(
         --     "n",
@@ -85,13 +83,13 @@ return {
                     horizontal = {
                         width = 0.8,
                         height = 0.7,
-                        prompt_position = "top"
-                    }
+                        prompt_position = "top",
+                    },
                 },
                 -- sorting_strategy = "ascending",
                 winblend = 10,
                 prompt_prefix = "🔍 ",
-                selection_caret = " "
+                selection_caret = " ",
                 -- mappings = {
                 --     n = {
                 --         ["<C-w>"] = actions.send_selected_to_qflist + actions.open_qflist,

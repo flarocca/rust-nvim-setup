@@ -50,24 +50,14 @@ map(
     "<cmd>lua vim.lsp.buf.type_definition()<CR>",
     { desc = "Go to type definition", noremap = true, silent = true }
 )
-map(
-    "n",
-    "<Leader>gr",
-    "<cmd>Telescope lsp_references<CR>",
-    { desc = "Find references", noremap = true, silent = true }
-)
+map("n", "<Leader>gr", "<cmd>Telescope lsp_references<CR>", { desc = "Find references", noremap = true, silent = true })
 map(
     "n",
     "<Leader>ga",
     "<cmd>lua vim.lsp.buf.code_action()<CR>",
     { desc = "Code actions", noremap = true, silent = true }
 )
-map(
-    "n",
-    "<Leader>gn",
-    "<cmd>lua vim.lsp.buf.rename()<CR>",
-    { desc = "Remane", noremap = true, silent = true }
-)
+map("n", "<Leader>gn", "<cmd>lua vim.lsp.buf.rename()<CR>", { desc = "Remane", noremap = true, silent = true })
 
 -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
 map("n", "zR", require("ufo").openAllFolds, { desc = "Unfold all" })
@@ -99,9 +89,7 @@ map(
 map("n", "<leader>fb", builtin.buffers, { desc = "Find Buffers" })
 map("n", "<leader>fh", builtin.help_tags, { desc = "Find Help Tags" })
 map("n", "<leader>fs", builtin.lsp_document_symbols, { desc = "Find Symbols" })
-map("n", "<leader>fi", "<cmd>AdvancedGitSearch<CR>", { desc = "Advanced Git Search" })
 map("n", "<leader>fo", builtin.oldfiles, { desc = "Find Old Files" })
 map("n", "<leader>fw", builtin.grep_string, { desc = "Find Word under Cursor" })
-map("n", "<leader>fgc", builtin.git_commits, { desc = "Search Git Commits" })
-map("n", "<leader>fgb", builtin.git_bcommits, { desc = "Search Git Commits for Buffer" })
 map("n", "<leader>fk", builtin.keymaps, { desc = "Find Keymaps" })
+map("n", "<leader>fd", builtin.diagnostics, { desc = "Find Diagnostics" })
