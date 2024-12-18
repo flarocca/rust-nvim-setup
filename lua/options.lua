@@ -48,10 +48,11 @@ opt.swapfile = false
 
 vim.lsp.inlay_hint.enable(true)
 
-vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+vim.o.fillchars = [[eob: ,fold: ,foldopen:▾,foldsep: ,foldclose:▸]]
 vim.o.foldcolumn = "auto:9" -- '0' is not bad
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
+vim.o.foldnestmax = 1
+vim.o.foldlevel = 99999999 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99999999
 vim.o.foldenable = true
 
 vim.o.scrolloff = 5 -- Keep some context lines above/below the cursor
@@ -61,4 +62,4 @@ vim.o.sidescrolloff = 5 -- Keep some context lines to the left/right
 vim.o.lazyredraw = false -- Ensure no delay in screen redrawing
 vim.o.cursorline = true -- Highlight the current line
 vim.o.cursorcolumn = true -- Highlight the current column
-vim.o.cursorlineopt ='number,line'
+vim.o.cursorlineopt = "number,line"

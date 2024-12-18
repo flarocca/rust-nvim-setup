@@ -73,6 +73,9 @@ require("nvim-tree").setup {
                 ".git",
             },
         },
+        change_dir = {
+            enable = false,
+        },
     },
     tab = {
         sync = {

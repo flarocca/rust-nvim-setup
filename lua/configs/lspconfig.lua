@@ -67,3 +67,16 @@ for _, lsp in ipairs(servers) do
         capabilities = capabilities,
     }
 end
+
+local configs = require "lspconfig.configs"
+
+configs.solidity = {
+    default_config = {
+        cmd = { "nomicfoundation-solidity-language-server", "--stdio" },
+        filetypes = { "solidity" },
+        root_dir = lspconfig.util.find_git_ancestor,
+        single_file_support = true,
+    },
+}
+
+lspconfig.solidity.setup {}
