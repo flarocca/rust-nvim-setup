@@ -1,5 +1,6 @@
 return {
     {
+        "klen/nvim-test",
         "nvim-tree/nvim-web-devicons",
         "nvim-lua/plenary.nvim",
         "nvim-telescope/telescope-ui-select.nvim",

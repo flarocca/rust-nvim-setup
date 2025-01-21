@@ -93,3 +93,10 @@ map("n", "<leader>fo", builtin.oldfiles, { desc = "Find Old Files" })
 map("n", "<leader>fw", builtin.grep_string, { desc = "Find Word under Cursor" })
 map("n", "<leader>fk", builtin.keymaps, { desc = "Find Keymaps" })
 map("n", "<leader>fd", builtin.diagnostics, { desc = "Find Diagnostics" })
+
+-- Test Runner
+map("n", "<leader>tf", "<cmd>TestFile<CR>", { desc = "Test File" })
+map("n", "<leader>ts", "<cmd>TestFile<CR>", { desc = "Test Suite" })
+map("n", "<leader>tn", "<cmd>TestFile<CR>", { desc = "Test Nearer to cursor" })
+map("n", "<leader>tl", "<cmd>TestFile<CR>", { desc = "Test Last" })
+map("n", "<leader>tv", "<cmd>TestFile<CR>", { desc = "Test Visit" })
