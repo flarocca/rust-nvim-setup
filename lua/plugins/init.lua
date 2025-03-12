@@ -13,6 +13,7 @@ return {
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-vsnip",
+        "karb94/neoscroll.nvim",
     },
     {
         "stevearc/conform.nvim",

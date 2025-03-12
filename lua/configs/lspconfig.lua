@@ -3,7 +3,7 @@ require("nvchad.configs.lspconfig").defaults()
 local lspconfig = require "lspconfig"
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-local servers = { "html", "cssls" }
+local servers = { "html", "cssls", "typescript", "typescriptreact" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 -- Función para configurar keymaps para cada servidor

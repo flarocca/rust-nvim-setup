@@ -87,12 +87,30 @@ map(
     { desc = "Live Grep Code" }
 )
 map("n", "<leader>fb", builtin.buffers, { desc = "Find Buffers" })
-map("n", "<leader>fh", builtin.help_tags, { desc = "Find Help Tags" })
 map("n", "<leader>fs", builtin.lsp_document_symbols, { desc = "Find Symbols" })
-map("n", "<leader>fo", builtin.oldfiles, { desc = "Find Old Files" })
 map("n", "<leader>fw", builtin.grep_string, { desc = "Find Word under Cursor" })
 map("n", "<leader>fk", builtin.keymaps, { desc = "Find Keymaps" })
 map("n", "<leader>fd", builtin.diagnostics, { desc = "Find Diagnostics" })
+map(
+    "n",
+    "<leader>fo",
+    "<cmd>lua vim.diagnostic.open_float()<CR>",
+    { desc = "Find diagnostics", noremap = true, silent = true }
+)
+map(
+    "n",
+    "<leader>f[",
+    "<cmd>lua vim.diagnostic.goto_prev()<CR>",
+    { desc = "Find next diagnostic", noremap = true, silent = true }
+)
+map(
+    "n",
+    "<leader>f]",
+    "<cmd>lua vim.diagnostic.goto_next()<CR>",
+    { desc = "Find prev diagnostic", noremap = true, silent = true }
+)
+-- map("n", "<leader>fh", builtin.help_tags, { desc = "Find Help Tags" })
+-- map("n", "<leader>fo", builtin.oldfiles, { desc = "Find Old Files" })
 
 -- Test Runner
 map("n", "<leader>tf", "<cmd>TestFile<CR>", { desc = "Test File" })
