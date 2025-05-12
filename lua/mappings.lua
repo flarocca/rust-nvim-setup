@@ -31,19 +31,19 @@ map(
     "<cmd>lua vim.lsp.buf.definition()<CR>",
     { desc = "Go to definition", noremap = true, silent = true }
 )
-map("n", "<Leader>gh", "<cmd>lua vim.lsp.buf.hover()<CR>", { desc = "Hover actions", noremap = true, silent = true })
+-- map("n", "<Leader>gh", "<cmd>lua vim.lsp.buf.hover()<CR>", { desc = "Hover actions", noremap = true, silent = true })
 map(
     "n",
     "<Leader>gi",
     "<cmd>lua vim.lsp.buf.implementation()<CR>",
     { desc = "Go to implementation", noremap = true, silent = true }
 )
-map(
-    "n",
-    "<Leader>gs",
-    "<cmd>lua vim.lsp.buf.signature_help()<CR>",
-    { desc = "Signature", noremap = true, silent = true }
-)
+-- map(
+--     "n",
+--     "<Leader>gs",
+--     "<cmd>lua vim.lsp.buf.signature_help()<CR>",
+--     { desc = "Signature", noremap = true, silent = true }
+-- )
 map(
     "n",
     "<Leader>gt",
