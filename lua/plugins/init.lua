@@ -16,35 +16,27 @@ return {
         "karb94/neoscroll.nvim",
     },
     {
+        "williamboman/mason.nvim",
+        opts = {
+            ensure_installed = {
+                "codelldb",
+                "black",
+                "debugpy",
+                "mypy",
+                "ruff-lsp",
+                "pyright",
+            },
+        },
+    },
+    {
         "stevearc/conform.nvim",
-        event = "BufWritePre", -- uncomment for format on save
+        event = "BufWritePre",
         opts = require "configs.conform",
     },
     {
         "neovim/nvim-lspconfig",
         config = function()
             require "configs.lspconfig"
-        end,
-    },
-    {
-        "mrcjkb/rustaceanvim",
-        version = "^5",
-        lazy = false,
-        ft = "rust",
-        config = function()
-            local mason_registry = require "mason-registry"
-            local codelldb = mason_registry.get_package "codelldb"
-            local extension_path = codelldb:get_install_path() .. "/extension/"
-            local codelldb_path = extension_path .. "adapter/codelldb"
-            local liblldb_path = extension_path .. "lldb/lib/liblldb.dylib"
-            local cfg = require "rustaceanvim.config"
-
-            vim.g.rustaceanvim = {
-                dap = {
-                    adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
-                },
-            }
-            vim.g.rustfmt_autosave = 1
         end,
     },
     {
@@ -84,15 +76,12 @@ return {
         ft = { "toml" },
         config = function()
             require("crates").setup {
-                completion = {
-                    cmp = {
-                        enabled = true,
-                    },
+                lsp = {
+                    enabled = true,   -- start in-process LSP
+                    completion = true,
+                    hover = true,
+                    actions = true,
                 },
-            }
-            ---@diagnostic disable-next-line: redundant-parameter
-            require("cmp").setup {
-                sources = { { name = "crates" } },
             }
         end,
     },
@@ -138,24 +127,9 @@ return {
         },
     },
     {
-        "CopilotC-Nvim/CopilotChat.nvim",
-        lazy = false,
-        branch = "main",
-        dependencies = {
-            { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
-            { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
-        },
-        build = "make tiktoken", -- Only on MacOS or Linux
-        config = function()
-            require("CopilotChat").setup {}
-        end,
-        -- See Commands section for default commands if you want to lazy load on them
-    },
-    {
         "b0o/SchemaStore.nvim",
-        lazy = false, -- Cargar solo cuando sea necesario
+        lazy = false,
         config = function()
-            -- Configuración adicional del plugin
             require("schemastore").setup {
                 settings = {
                     json = {

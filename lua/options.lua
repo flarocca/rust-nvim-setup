@@ -4,62 +4,80 @@ vim.cmd "let g:netrw_liststyle = 3"
 
 local opt = vim.opt
 
-opt.relativenumber = true
 opt.number = true
+opt.relativenumber = true
 
--- tabs & indentation
-opt.tabstop = 4 -- 2 spaces for tabs (prettier default)
-opt.shiftwidth = 4 -- 2 spaces for indent width
-opt.expandtab = true -- expand tab to spaces
-opt.autoindent = true -- copy indent from current line when starting new one
+opt.tabstop = 4       -- 4 spaces for a tab
+opt.shiftwidth = 4    -- 4 spaces for indent width
+opt.expandtab = true  -- convert tabs to spaces
+opt.autoindent = true -- copy indent from current line
 
+-- wrapping
 opt.wrap = false
 
 -- search settings
-opt.ignorecase = true -- ignore case when searching
-opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
+opt.ignorecase = true -- ignore case by default
+opt.smartcase = true  -- if pattern has uppercase, make search case-sensitive
 
+-- cursor highlight
 opt.cursorline = true
 opt.cursorcolumn = true
--- turn on termguicolors for tokyonight colorscheme to work
--- (have to use iterm2 or any other true color terminal)
-opt.termguicolors = true
-opt.background = "dark" -- colorschemes that can be light or dark will be made dark
-opt.signcolumn = "yes" -- show sign column so that text doesn't shift
+opt.cursorlineopt = "number,line"
 
--- backspace
-opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
+-- colors / UI
+opt.termguicolors = true
+opt.background = "dark"
+opt.signcolumn = "yes"
+
+-- backspace behavior
+opt.backspace = "indent,eol,start"
 
 -- clipboard
-opt.clipboard:append "unnamedplus" -- use system clipboard as default register
+opt.clipboard:append "unnamedplus"
 
--- split windows
-opt.splitright = true -- split vertical window to the right
-opt.splitbelow = true -- split horizontal window to the bottom
+-- splits
+opt.splitright = true
+opt.splitbelow = true
 
--- turn off swapfile
+-- swap
 opt.swapfile = false
 
--- LSP: Show diagnostic popup on cursor hold
--- vim.api.nvim_create_autocmd({ 'CursorHold' }, {
---   pattern = { "*" },
---   command = ':lua vim.diagnostic.open_float({ scope="line", focus = false })',
--- })
+-- folds (for ufo or similar)
+opt.fillchars = {
+  eob = " ",
+  fold = " ",
+  foldopen = "▾",
+  foldsep = " ",
+  foldclose = "▸",
+}
+opt.foldcolumn = "auto:9"
+opt.foldnestmax = 1
+opt.foldlevel = 99999999
+opt.foldlevelstart = 99999999
+opt.foldenable = true
 
-vim.lsp.inlay_hint.enable(true)
+-- scrolling context
+opt.scrolloff = 5
+opt.sidescrolloff = 5
 
-vim.o.fillchars = [[eob: ,fold: ,foldopen:▾,foldsep: ,foldclose:▸]]
-vim.o.foldcolumn = "auto:9" -- '0' is not bad
-vim.o.foldnestmax = 1
-vim.o.foldlevel = 99999999 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99999999
-vim.o.foldenable = true
+-- Redrawing
+opt.lazyredraw = false
 
-vim.o.scrolloff = 5 -- Keep some context lines above/below the cursor
-vim.o.sidescrolloff = 5 -- Keep some context lines to the left/right
+-- LSP inlay hints: enable per buffer on attach, if available
+if vim.lsp.inlay_hint and vim.lsp.inlay_hint.enable then
+  vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("LspInlayHints", { clear = true }),
+    callback = function(args)
+      local bufnr = args.buf
+      pcall(vim.lsp.inlay_hint.enable, bufnr, true)
+    end,
+  })
+end
 
--- Redrawing and cursor enhancements
-vim.o.lazyredraw = false -- Ensure no delay in screen redrawing
-vim.o.cursorline = true -- Highlight the current line
-vim.o.cursorcolumn = true -- Highlight the current column
-vim.o.cursorlineopt = "number,line"
+-- Example: diagnostic popup on CursorHold (keep commented if you don't want it)
+vim.opt.updatetime = 1000
+vim.api.nvim_create_autocmd("CursorHold", {
+  callback = function()
+    vim.diagnostic.open_float(nil, { scope = "line", focus = false })
+  end,
+})
