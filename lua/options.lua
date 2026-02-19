@@ -91,3 +91,9 @@ vim.api.nvim_create_autocmd("CursorHold", {
     vim.diagnostic.open_float(nil, { scope = "line", focus = false })
   end,
 })
+
+-- vim.diagnostic.config({
+--   virtual_text = false,   -- disable single-line inline text
+--   virtual_lines = true,   -- enable multi-line inline diagnostics
+--   float = { border = "single", wrap = true },
+-- })

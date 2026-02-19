@@ -43,6 +43,10 @@ setup_server("eslint", {
   ---@diagnostic disable-next-line: unused-local
   on_attach = function(client, bufnr)
     -- allow NvChad's on_attach to still run
+    if client.name == "rust-analyzer" then
+      client.server_capabilities.signatureHelpProvider = nil
+    end
+
     if nvlsp.on_attach then
       nvlsp.on_attach(client, bufnr)
     end
